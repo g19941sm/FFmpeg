@@ -1,0 +1,18 @@
+<静止画を3秒の動画にする>
+ffmpeg -loop 1 -i image1.JPG -vcodec libx264 -pix_fmt yuv420p -t 3 -r 23.98 -s 1920x1080 -aspect "16:9" image1.mov
+ffmpeg -loop 1 -i image2.JPG -vcodec libx264 -pix_fmt yuv420p -t 3 -r 23.98 -s 1920x1080 -aspect "16:9" image2.mov
+ffmpeg -loop 1 -i image3.JPG -vcodec libx264 -pix_fmt yuv420p -t 3 -r 23.98 -s 1920x1080 -aspect "16:9" image3.mov
+ffmpeg -loop 1 -i image4.JPG -vcodec libx264 -pix_fmt yuv420p -t 3 -r 23.98 -s 1920x1080 -aspect "16:9" image4.mov
+ffmpeg -loop 1 -i image5.JPG -vcodec libx264 -pix_fmt yuv420p -t 3 -r 23.98 -s 1920x1080 -aspect "16:9" image5.mov
+ffmpeg -loop 1 -i image6.JPG -vcodec libx264 -pix_fmt yuv420p -t 3 -r 23.98 -s 1920x1080 -aspect "16:9" image6.mov
+ffmpeg -loop 1 -i image7.JPG -vcodec libx264 -pix_fmt yuv420p -t 3 -r 23.98 -s 1920x1080 -aspect "16:9" image7.mov
+ffmpeg -loop 1 -i image8.JPG -vcodec libx264 -pix_fmt yuv420p -t 3 -r 23.98 -s 1920x1080 -aspect "16:9" image8.mov
+
+<きゅんきゅんポイントにハート加工>
+ffmpeg -i きゅんきゅんポイント1.mov -i heart.mov -filter_complex "[1:0]colorkey=black:0.01:1[colorkey];[0:0][colorkey]overlay=x=(W-w)/2:y=(H-h)/2" -preset ultrafast きゅんポイント1.mov
+ffmpeg -i きゅんきゅんポイント2.mov -i heart.mov -filter_complex "[1:0]colorkey=black:0.01:1[colorkey];[0:0][colorkey]overlay=x=(W-w)/2:y=(H-h)/2" -preset ultrafast きゅんポイント2.mov
+ffmpeg -i きゅんきゅんポイント3.mov -i heart.mov -filter_complex "[1:0]colorkey=black:0.01:1[colorkey];[0:0][colorkey]overlay=x=(W-w)/2:y=(H-h)/2" -preset ultrafast きゅんポイント3.mov
+ffmpeg -i きゅんきゅんポイント4.mov -i heart.mov -filter_complex "[1:0]colorkey=black:0.01:1[colorkey];[0:0][colorkey]overlay=x=(W-w)/2:y=(H-h)/2" -preset ultrafast きゅんポイント4.mov
+
+<動画結合>
+ffmpeg -f concat -safe 0 -i list.txt matome.mov
