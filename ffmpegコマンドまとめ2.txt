@@ -1,0 +1,28 @@
+<JPGをaviに変換>
+ffmpeg -loop 1 -i image1.JPG -vcodec libx264 -pix_fmt yuv420p -t 3 -r 23.98 -s 1920x1080 -aspect "16:9" image1.avi
+ffmpeg -loop 1 -i image2.JPG -vcodec libx264 -pix_fmt yuv420p -t 3 -r 23.98 -s 1920x1080 -aspect "16:9" image2.avi
+ffmpeg -loop 1 -i image3.JPG -vcodec libx264 -pix_fmt yuv420p -t 3 -r 23.98 -s 1920x1080 -aspect "16:9" image3.avi
+ffmpeg -loop 1 -i image4.JPG -vcodec libx264 -pix_fmt yuv420p -t 3 -r 23.98 -s 1920x1080 -aspect "16:9" image4.avi
+ffmpeg -loop 1 -i image5.JPG -vcodec libx264 -pix_fmt yuv420p -t 3 -r 23.98 -s 1920x1080 -aspect "16:9" image5.avi
+ffmpeg -loop 1 -i image6.JPG -vcodec libx264 -pix_fmt yuv420p -t 3 -r 23.98 -s 1920x1080 -aspect "16:9" image6.avi
+
+<きゅんポイント.movをaviに変換>
+ffmpeg -i いいねポイント6.mov いいねポイント6.avi
+ffmpeg -i いいねポイント7.mov いいねポイント7.avi
+ffmpeg -i いいねポイント8.mov いいねポイント8.avi
+ffmpeg -i いいねポイント9.mov いいねポイント9.avi
+
+<きゅんきゅんポイントにハート加工>・・①
+ffmpeg -i きゅんきゅんポイント2.mov -i heart.mov -filter_complex "[1:0]colorkey=black:0.01:1[colorkey];[0:0][colorkey]overlay=x=(W-w)/2:y=(H-h)/2" -preset ultrafast きゅんポイント2.mov
+ffmpeg -i きゅんきゅんポイント3.mov -i heart.mov -filter_complex "[1:0]colorkey=black:0.01:1[colorkey];[0:0][colorkey]overlay=x=(W-w)/2:y=(H-h)/2" -preset ultrafast きゅんポイント3.mov
+
+<きゅんポイント.movをaviに変換>・・②
+ffmpeg -i きゅんポイント2.mov きゅんポイント2.avi
+ffmpeg -i きゅんポイント3.mov きゅんポイント3.avi
+
+<できれば①②を↓みたいにまとめたい>
+ffmpeg -i きゅんきゅんポイント2.mov -i heart.mov -filter_complex "[1:0]colorkey=black:0.01:1[colorkey];[0:0][colorkey]overlay=x=(W-w)/2:y=(H-h)/2" -preset ultrafast きゅんポイント2.avi
+ffmpeg -i きゅんきゅんポイント3.mov -i heart.mov -filter_complex "[1:0]colorkey=black:0.01:1[colorkey];[0:0][colorkey]overlay=x=(W-w)/2:y=(H-h)/2" -preset ultrafast きゅんポイント3.avi
+
+<動画結合>
+ffmpeg -f concat -safe 0 -i sample.txt output.mov
